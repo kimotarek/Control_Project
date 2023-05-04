@@ -1,0 +1,103 @@
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css"
+/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<div class="container">
+  <section class="tools">
+    <div class="row">
+      <label class="title" >Signal Flow Graphs</label>
+      <ul class="options">
+        <li class="option">
+          <img src="assets/icons/n.png" style="width:45px ;" alt="" />
+          <button (click)="drawcircle() " style="font-size: larger;">NODE</button>
+        </li>
+       
+      </ul>
+        <input
+      (blur)="get_value(product.value)"
+        class=""
+        type="text"
+        placeholder="value of link --> defult: 1"
+        #product
+      /> 
+      <button class="btn btn-dark" id="simulate-btn" (click)="Run()"> Simulate <img src="assets/icons/play.png" alt="" />
+      </button>
+      
+    </div>
+    
+    <div class="routh-part" >
+      <label class="title">Routh Stability </label>
+        <button
+        class="btn btn-dark"
+        id="routh-btn"
+          href="javascript:void(0)"
+          onclick="document.getElementById('id01').style.display='block'"
+        >
+          use Routh Table <i></i>
+        </button>
+    <div class= >
+        <button class="btn btn-dark" id="clear" (click)="clear_request()">
+          Clear All <img class="imgbutton" src="assets/icons/clearall.png" />
+        </button>
+      </div>
+    
+    </div>
+
+   
+    <br />
+  </section>
+
+  <section id="board"></section>
+</div>
+
+<div id="id01" class="w3-modal" style="border-radius: 20px">
+  <div class="w3-modal-content">
+    <div class="w3-container w3-padding">
+      <span
+        onclick="document.getElementById('id01').style.display='none'"
+        class="w3-right w3-xxlarge"
+        ><i class="fa fa-remove"></i
+      ></span>
+      <h2>
+        Link<i
+          class="fa fa-link"
+          style="margin-left: 10px; font-size: 40px; color: black"
+        ></i>
+      </h2>
+    </div>
+    <div class="w3-panel">
+
+      <div>
+        <label for="from" >Degree Of Equation</label>
+        <div>
+          <input type="text" #degree class="eq" placeholder="Enter the degree of equation" (blur)="get_input_routh(degree.value,0)">
+        </div>
+        <label for="from">Equation</label>
+        <div>
+          <!-- <select class="selectdropdown" #to id="to">
+            <option value="select">Select destination</option>
+            <!-- <option  *ngFor="let so of all">{{ so }}</option> -->
+          <input type="text" #eq placeholder="ex:s^5+s^4+10s^3+72s^2+152s+240" (blur)="get_input_routh(eq.value,1)" >
+         </div>
+      </div>
+
+      <div>
+        <button
+          class="add-to-contacts-button btn btn-primary"
+          onclick="document.getElementById('id01').style.display='none'" 
+          (click)="Routh_results()"
+        >
+        Show Results
+          <i style="color: azure; font-size: 18px; margin-left: 5px"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
